@@ -1,7 +1,7 @@
 pipeline{
     agent any
     environment{
-	  PATH = "${PATH}:${tool name: 'maven', type: 'maven'}/bin"
+	  PATH = "${PATH}:${tool name: 'Maven', type: 'maven'}/bin"
 	}
     stages{
         stage('SCM Checkout'){
