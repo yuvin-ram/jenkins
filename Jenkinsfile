@@ -6,7 +6,7 @@ pipeline{
     stages{
         stage('SCM Checkout'){
             steps{
-                git url: 'https://github.com/javahometech/6pmwebapp',
+                git url: 'https://github.com/yuvin-ram/jenkins',
                 branch: 'master',
                 credentialsId: 'github'
             }
@@ -22,11 +22,11 @@ pipeline{
             steps{
                 sshagent(['tomcat']) {
                     // stop tomcat
-                    sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.4.187 /opt/tomcat/bin/shutdown.sh"
+                    sh "ssh -o StrictHostKeyChecking=no ec2-user@13.233.153.224 /opt/tomcat/bin/shutdown.sh"
                     // copy war file to remote tomcat
-                    sh "scp target/6pmwebapp.war  ec2-user@172.31.4.187:/opt/tomcat/webapps/"
+                    sh "scp target/6pmwebapp.war  ec2-user@13.233.153.224:/opt/tomcat/webapps/"
                     // start tomcat
-                    sh "ssh ec2-user@172.31.4.187 /opt/tomcat/bin/startup.sh"
+                    sh "ssh ec2-user@13.233.153.224 /opt/tomcat/bin/startup.sh"
                 } 
             }
         }
